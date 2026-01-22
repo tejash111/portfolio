@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isColorActive, setIsColorActive] = useState(false);
+  const toggleColor = () => setIsColorActive((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,13 +43,17 @@ export const Header = () => {
             dragElastic={0.3}
             dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
             whileDrag={{ scale: 1.1 }}
+            onTapStart={toggleColor}
+            onDragStart={toggleColor}
           >
             <Image 
               src="/avatar.png" 
               alt="Avatar" 
               width={48} 
               height={48}
-              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-300 pointer-events-none"
+              className={`rounded-lg transition-all duration-300 pointer-events-none ${
+                isColorActive ? 'grayscale-0' : 'grayscale hover:grayscale-0'
+              }`}
               draggable="false"
             />
           </motion.div>
