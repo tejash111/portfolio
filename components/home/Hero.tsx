@@ -8,7 +8,6 @@ import { RESUME_DATA } from "@/data/resume-data";
 
 export function Hero() {
   const [isColorActive, setIsColorActive] = useState(false);
-  const toggleColor = () => setIsColorActive((prev) => !prev);
   return (
     <section className="flex min-h-screen w-full items-center justify-center bg-[#fbfbfa] px-4 py-12 sm:px-8 sm:py-16">
       <div>
@@ -89,7 +88,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Side: Photo Card - Fully Draggable with Touch Color Toggle */}
+        {/* Right Side: Photo Card - Fully Draggable with Touch Color Effect */}
         <motion.div 
           className="group/photo cursor-grab active:cursor-grabbing rounded-[1.5rem] bg-[#e6e6e7] p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] sm:rounded-[2rem] sm:p-2"
           drag
@@ -98,8 +97,8 @@ export function Hero() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          onTapStart={toggleColor}
-          onDragStart={toggleColor}
+          onTouchStart={() => setIsColorActive(true)}
+          onTouchEnd={() => setIsColorActive(false)}
         >
           <div className="rounded-[1.3rem] bg-[#ffffff] p-0.5 sm:rounded-[1.8rem] sm:p-1">
             <div className="h-[280px] w-[200px] overflow-hidden rounded-[1.2rem] bg-gradient-to-b from-[#e6e6e7] to-[#fff] sm:h-[350px] sm:w-[250px] sm:rounded-[1.6rem] md:h-[400px] md:w-[280px]">

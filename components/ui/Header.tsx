@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isColorActive, setIsColorActive] = useState(false);
-  const toggleColor = () => setIsColorActive((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,14 +36,14 @@ export const Header = () => {
       <nav className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <motion.div 
-            className="cursor-grab active:cursor-grabbing"
+            className="group cursor-grab active:cursor-grabbing"
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             dragElastic={0.3}
             dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
             whileDrag={{ scale: 1.1 }}
-            onTapStart={toggleColor}
-            onDragStart={toggleColor}
+            onTouchStart={() => setIsColorActive(true)}
+            onTouchEnd={() => setIsColorActive(false)}
           >
             <Image 
               src="/avatar.png" 
@@ -52,7 +51,7 @@ export const Header = () => {
               width={48} 
               height={48}
               className={`rounded-lg transition-all duration-300 pointer-events-none ${
-                isColorActive ? 'grayscale-0' : 'grayscale hover:grayscale-0'
+                isColorActive ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'
               }`}
               draggable="false"
             />
