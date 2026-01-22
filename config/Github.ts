@@ -1,0 +1,36 @@
+export const githubConfig = {
+  username: 'tejash111',
+  apiUrl: 'https://github-contributions-api.jogruber.de/v4',
+  title: 'GitHub Contributions',
+  subtitle: 'coding journey over the past year',
+  totalCountLabel: '{{count}} contributions',
+  fontSize: 14,
+  maxLevel: 4,
+  loadingState: {
+    description: 'Loading GitHub contributions...',
+  },
+  errorState: {
+    title: 'Unable to load contributions',
+    description: 'There was an error fetching GitHub data. Please try again later.',
+    buttonText: 'View GitHub Profile',
+  },
+  theme: {
+    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+    dark: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+  },
+  months: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
+  weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+};
